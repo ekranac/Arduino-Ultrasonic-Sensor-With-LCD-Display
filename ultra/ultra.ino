@@ -31,7 +31,6 @@ void setup() {
   lcd.begin(16, 2);
   lcd.print("> POLETNA SOLA <");
 }
-
 int meritev()
 {
   int vsota=0;
@@ -45,7 +44,6 @@ int meritev()
   }
   return vsota/1;
 }
-
 void loop() {
   if((millis()/300)%4==0)
     digitalWrite(LED13, HIGH);
@@ -75,23 +73,23 @@ void loop() {
   if (buttonState == HIGH) {       
     if(buttonPress==0)
     {
-      lcd.print("ON ");
+      lcd.print("OFF");
     }
     else
     {
-      lcd.print("OFF");
+      lcd.print("ON ");
     }
   } 
   else {
     if(buttonPress==0)
     {
       buttonPress=1;
-      lcd.print("ON ");
+      lcd.print("OFF");
     }
     else
     {
       buttonPress=0;
-      lcd.print("OFF");
+      lcd.print("ON ");
     }
   }
 }
