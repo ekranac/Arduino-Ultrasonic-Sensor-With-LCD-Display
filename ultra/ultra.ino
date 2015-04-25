@@ -61,11 +61,7 @@ void loop() {
     digitalWrite(LED10, HIGH);
   else
     digitalWrite(LED10, LOW);
-  lcd.setCursor(9, 1);
-  lcd.print(meritev());
-  lcd.print("cm ");
   
-  lcd.setCursor(0, 1);
   // read the state of the pushbutton value:
   buttonState = digitalRead(buttonPin);
   // check if the pushbutton is pressed.
@@ -73,23 +69,51 @@ void loop() {
   if (buttonState == HIGH) {       
     if(buttonPress==0)
     {
-      lcd.print("OFF");
+      lcd.setCursor(0,1);
+      lcd.print("  ");
+      lcd.setCursor(14,1);
+      lcd.print("->");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev());
+      lcd.print("cm ");
     }
     else
     {
-      lcd.print("ON ");
+      lcd.setCursor(14,1);
+      lcd.print("  ");
+      lcd.setCursor(0,1);
+      lcd.print("<-");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev() + 10);
+      lcd.print("cm ");
     }
   } 
   else {
     if(buttonPress==0)
     {
       buttonPress=1;
-      lcd.print("OFF");
+      lcd.setCursor(0,1);
+      lcd.print("  ");
+      lcd.setCursor(14,1);
+      lcd.print("->");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev());
+      lcd.print("cm ");
     }
     else
     {
       buttonPress=0;
-      lcd.print("ON ");
+      lcd.setCursor(14,1);
+      lcd.print("  ");
+      lcd.setCursor(0,1);
+      lcd.print("<-");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev() + 10);
+      lcd.print("cm ");
     }
   }
 }

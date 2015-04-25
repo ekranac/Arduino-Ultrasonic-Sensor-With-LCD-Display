@@ -31,7 +31,6 @@ void setup() {
   lcd.begin(16, 2);
   lcd.print("> POLETNA SOLA <");
 }
-
 int meritev()
 {
   int vsota=0;
@@ -45,7 +44,6 @@ int meritev()
   }
   return vsota/1;
 }
-
 void loop() {
   if((millis()/300)%4==0)
     digitalWrite(LED13, HIGH);
@@ -63,11 +61,10 @@ void loop() {
     digitalWrite(LED10, HIGH);
   else
     digitalWrite(LED10, LOW);
-  lcd.setCursor(9, 1);
+  lcd.setCursor(6, 1);
   lcd.print(meritev());
   lcd.print("cm ");
   
-  lcd.setCursor(0, 1);
   // read the state of the pushbutton value:
   buttonState = digitalRead(buttonPin);
   // check if the pushbutton is pressed.
@@ -75,23 +72,43 @@ void loop() {
   if (buttonState == HIGH) {       
     if(buttonPress==0)
     {
-      lcd.print("ON ");
+      lcd.setCursor(0,1);
+      lcd.print("  ");
+      lcd.setCursor(14,1);
+      lcd.print("->");
     }
     else
     {
-      lcd.print("OFF");
+      lcd.setCursor(14,1);
+      lcd.print("  ");
+      lcd.setCursor(0,1);
+      lcd.print("<-");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev() + 10);
+      lcd.print("cm ");
     }
   } 
   else {
     if(buttonPress==0)
     {
       buttonPress=1;
-      lcd.print("ON ");
+      lcd.setCursor(0,1);
+      lcd.print("  ");
+      lcd.setCursor(14,1);
+      lcd.print("->");
     }
     else
     {
       buttonPress=0;
-      lcd.print("OFF");
+      lcd.setCursor(14,1);
+      lcd.print("  ");
+      lcd.setCursor(0,1);
+      lcd.print("<-");
+
+      lcd.setCursor(6, 1);
+      lcd.print(meritev() + 10);
+      lcd.print("cm ");
     }
   }
 }
